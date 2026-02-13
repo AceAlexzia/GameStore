@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using GameStore.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +50,22 @@ app.MapPost("/games", (Game game) =>
     games.Add(game);
 
     return Results.CreatedAtRoute(getGameEndpoingName, new { id = game.id }, game);
+}).WithParameterValidation();
+
+
+// PUT /game/id
+app.MapPut("/games/{id}", (Guid id, Game updateGame) =>
+{
+    Game? existingGame = games.Find(game => game.id == id);
+    if (existingGame is null)
+    {
+        return Results.NotFound();
+    }
+    existingGame.name = updateGame.name;
+    existingGame.genre = updateGame.genre;
+    existingGame.price = updateGame.price;
+    existingGame.releaseDate = updateGame.releaseDate;
+    return Results.NoContent();
 }).WithParameterValidation();
 
 app.Run();
