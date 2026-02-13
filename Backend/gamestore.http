@@ -8,8 +8,12 @@ POST http://localhost:5206/games
 Content-Type: application/json
 
 {
-    "name": "GTA 6",
-    "genre": "Action",
+    "name": "Call of Duty",
+    "genre": {
+        "id": "cb4fa849-074b-4d58-ad10-a0bc40cbf097",
+        "name": "Action"
+    },
     "price": 99.99,
-    "releaseDate": "2027-07-26"
+    "releaseDate": "2027-07-26",
+    "description": "this is a good game."
 }
