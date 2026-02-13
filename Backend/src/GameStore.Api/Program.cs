@@ -49,6 +49,6 @@ app.MapPost("/games", (Game game) =>
     games.Add(game);
 
     return Results.CreatedAtRoute(getGameEndpoingName, new { id = game.id }, game);
-});
+}).WithParameterValidation();
 
 app.Run();
