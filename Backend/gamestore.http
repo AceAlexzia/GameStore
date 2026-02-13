@@ -1,1 +1,15 @@
 GET http://localhost:5206/games
+
+###
+GET http://localhost:5206/games/d4d78f1f-980b-4c78-83f3-9cb92599521a
+
+###
+POST http://localhost:5206/games
+Content-Type: application/json
+
+{
+    "name": "GTA 6",
+    "genre": "Action",
+    "price": 99.99,
+    "releaseDate": "2027-07-26"
+}

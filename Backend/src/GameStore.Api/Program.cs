@@ -4,6 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 
+const string getGameEndpoingName = "GetGame";
+
 List<Game> games =
 [
     new Game {
@@ -31,5 +33,22 @@ List<Game> games =
 
 // GET /games
 app.MapGet("/games", () => games);
+
+
+// GET /games/id
+app.MapGet("/games/{id}", (Guid id) =>
+{
+    Game? game = games.Find(game => game.id == id);
+    return game is null ? Results.NotFound() : Results.Ok(game);
+}).WithName(getGameEndpoingName);
+
+// Post /games
+app.MapPost("/games", (Game game) =>
+{
+    game.id = Guid.NewGuid();
+    games.Add(game);
+
+    return Results.CreatedAtRoute(getGameEndpoingName, new { id = game.id }, game);
+});
 
 app.Run();
