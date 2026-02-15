@@ -11,7 +11,7 @@ public static class CreateGameEndpoint
 {
     public static void MapCreateGame(this IEndpointRouteBuilder app, GameStoreData data)
     {
-        app.MapPost("/games", (CreateGameDTO gameDTO) =>
+        app.MapPost("/", (CreateGameDTO gameDTO) =>
         {
             var genre = data.GetGenre(gameDTO.genreId);
             if (genre is null)

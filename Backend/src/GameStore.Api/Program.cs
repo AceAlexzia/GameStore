@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using GameStore.Api.Data;
 using GameStore.Api.Features;
+using GameStore.Api.Features.Games;
 using GameStore.Api.Features.Games.CreateGame;
 using GameStore.Api.Features.Games.DeleteGame;
 using GameStore.Api.Features.Games.GetGame;
@@ -16,25 +17,8 @@ var app = builder.Build();
 
 GameStoreData data = new GameStoreData();
 
-
-// GET /games
-app.MapGetGames(data);
-
-// GET /games/id
-app.MapGetGame(data);
-
-// GET /genres
-app.MapGetGenres(data);
-
-// Post /games
-app.MapCreateGame(data);
-
-
-// PUT /games/id
-app.MapUpdateGame(data);
-
-// DELETE /games/id
-app.MapDeleteGame(data);
+app.MapGames(data);
+app.MapGenres(data);
 
 app.Run();
 
