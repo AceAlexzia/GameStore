@@ -1,7 +1,8 @@
 using System;
-using GameStore.Api.Models;
 
 namespace GameStore.Api.Data;
+
+using GameStore.Api.Models;
 
 public class GameStoreData
 {

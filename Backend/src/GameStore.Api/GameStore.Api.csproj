@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Features\Games\DeleteGame\" />
+    <Folder Include="Features\Games\UpdateGame\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
