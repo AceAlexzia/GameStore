@@ -5,8 +5,8 @@ namespace GameStore.Api.Features.Genres;
 
 public static class GetGenres
 {
-    public static void MapGetGenres(this IEndpointRouteBuilder app, GameStoreData data)
+    public static void MapGetGenres(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/", () => data.GetGenres().Select(genres => new GenreDTO(genres.id, genres.name)));
+        app.MapGet("/", (GameStoreData data) => data.GetGenres().Select(genres => new GenreDTO(genres.id, genres.name)));
     }
 }

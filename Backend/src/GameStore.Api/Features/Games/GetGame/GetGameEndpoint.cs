@@ -8,9 +8,9 @@ using GameStore.Api.Data;
 
 public static class GetGameEndpoint
 {
-    public static void MapGetGame(this IEndpointRouteBuilder app, GameStoreData data)
+    public static void MapGetGame(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/{id}", (Guid id) =>
+        app.MapGet("/{id}", (Guid id, GameStoreData data) =>
         {
             Game? game = data.GetGame(id);
             return game is null ? Results.NotFound() : Results.Ok(
